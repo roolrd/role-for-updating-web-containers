@@ -1,0 +1,17 @@
+---
+- name: Update containers on Webservers of base-of-products
+  hosts: tag_Name_Webserver_in_ASG
+  gather_facts: no
+  become: yes
+  tasks:
+    - include_role:
+        name: update_containers
+
+#- name: clean containers and images on Jenkins Node
+#  hosts: tag_Name_Jenkins_Node
+#  gather_facts: no
+#  become: yes
+#  tasks:
+#    - include_role:
+#        name: cleaner_jenkins_node
+

@@ -1,9 +1,0 @@
----
-- name: Update containers on Webservers of base-of-products
-  hosts: tag_Name_Webserver_in_ASG
-  gather_facts: no
-  become: yes
-  
-  roles:
-    - update_containers
-

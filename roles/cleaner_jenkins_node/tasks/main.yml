@@ -1,0 +1,19 @@
+---
+# tasks file for cleaner_jenkins_node
+
+- name: installing docker SDK
+  command: "pip install docker"
+
+- name: Stop and remove container
+  docker_container:
+    name: "{{ container_name }}"
+    state: absent
+
+- name: Remove old images
+  docker_image:
+    state: absent
+    force_absent: yes
+    name: "{{ item }}:{{ tag }}"
+  loop: "{{ image_name }}"
+  with_list: "{{ tag }}"
+    

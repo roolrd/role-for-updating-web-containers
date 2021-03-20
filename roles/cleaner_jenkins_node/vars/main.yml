@@ -1,0 +1,10 @@
+---
+# vars file for clean_jenkins_node
+
+container_name: bop
+image_name: 
+  - roolrd/base_of_product
+  - base_of_product
+tag: "v{{ item }}"
+with_sequence: start=70 end=200
+
