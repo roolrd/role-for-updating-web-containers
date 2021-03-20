@@ -1,0 +1,43 @@
+---
+# tasks file for update_containers
+    - name: installing pip
+      package:
+        name: python-pip
+        state: present
+
+    - name: installing docker SDK
+      command: "pip install docker"
+
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      become: yes
+
+    - name: Stop and remove container
+      docker_container:
+        name: "{{ container_name }}"
+        state: absent
+
+    - name: Remove old images
+      docker_image:
+        state: absent
+        name: "{{ image_name }}"
+
+    - name: Copy env file
+      copy:
+        src: "{{source_db_cred}}"
+        dest: "{{ db_cred }}"
+        mode: 0640
+
+    - name: Start a container with a command
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        ports:
+          - "80:8080"
+        env_file: "{{ db_cred }}"
+        detach: yes
+

@@ -1,0 +1,7 @@
+---
+# vars file for update_containers
+
+container_name: bop
+image_name: roolrd/base_of_product
+db_cred: .env
+source_db_cred: ~/.env
