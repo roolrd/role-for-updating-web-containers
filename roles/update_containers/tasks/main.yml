@@ -25,11 +25,11 @@
         state: absent
         name: "{{ image_name_preview }}"
 
-    - name: Copy env file
-      copy:
-        src: "{{source_db_cred}}"
-        dest: "{{ db_cred }}"
-        mode: 0640
+#    - name: Copy env file
+#      copy:
+#        src: "{{source_db_cred}}"
+#        dest: "{{ db_cred }}"
+#        mode: 0640
 
     - name: Start a container with a command
       docker_container:

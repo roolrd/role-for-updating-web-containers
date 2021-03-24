@@ -4,5 +4,5 @@
 container_name: bop
 image_name_preview: roolrd/base_of_product
 image_name: roolrd/base_of_product
-db_cred: .env
-source_db_cred: ~/.env
+db_cred: ~/.env
+#source_db_cred: ~/.env
