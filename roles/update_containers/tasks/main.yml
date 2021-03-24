@@ -23,7 +23,7 @@
     - name: Remove old images
       docker_image:
         state: absent
-        name: "{{ image_name }}"
+        name: "{{ image_name_preview }}"
 
     - name: Copy env file
       copy:
